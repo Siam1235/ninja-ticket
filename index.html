@@ -75,7 +75,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="subtotal">$0</p>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="tax">$0</p>
                     </div>
                 </div>
                 <hr>
@@ -93,7 +93,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="grandTotal">$0</p>
                     </div>
                 </div>
             </div>
@@ -128,12 +128,14 @@
             }
 
             document.getElementById("ticket-number-economy").value = ticketCount;
+
+            totalCalculation();
         }
 
 
 
-        //........................... Economy Button Increase Decrease ....................//
-        
+        //........................... Business Button Increase Decrease ....................//
+
             
         function buttonHandlbusiness(isincrease){
             
@@ -149,6 +151,35 @@
             }
 
             document.getElementById("ticket-number-business").value = ticketCount;
+
+            totalCalculation();
+        }
+
+        //........................... Total Calculation ....................//
+
+        function totalCalculation(){
+            const businessClass = document.getElementById("ticket-number-business");
+            const businessClassParsing = parseInt(businessClass.value);
+            
+
+            const economyClass = document.getElementById("ticket-number-economy");
+            const economyClassParsing = parseInt(economyClass.value);
+            
+
+            const totalPrice = businessClassParsing * 150 + economyClassParsing * 100;
+            document.getElementById("subtotal").innerText = "$" + totalPrice;
+
+
+            //................ Tax On Total Price................//
+
+            const tax = totalPrice * 10 / 100;
+            document.getElementById("tax").innerText = "$" + tax; 
+
+            //................ Grand Total................//
+
+            const grandTotal = totalPrice + tax; 
+            document.getElementById("grandTotal").innerText = "$" +  grandTotal;
+
         }
     </script>
 </body>
