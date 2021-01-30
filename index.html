@@ -51,22 +51,22 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="ticket-number-business" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div >
-                    <button class="plus-minus-btn">+</button>
-                    <button class="plus-minus-btn">-</button>
+                    <button onclick="buttonHandlbusiness(true);" class="plus-minus-btn">+</button>
+                    <button onclick="buttonHandlbusiness(false);" class="plus-minus-btn">-</button>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="ticket-number-economy" class="inp-style inp-width" type="number" name="" value = "0">
                 </div>
                 <div>
-                   <button class="plus-minus-btn">+</button>
-                   <button class="plus-minus-btn">-</button>
+                   <button onclick="buttonHandlereconomy(true);" class="plus-minus-btn">+</button>
+                   <button onclick="buttonHandlereconomy(false);" class="plus-minus-btn">-</button>
                 </div>
             </div>
             <div class="calculations">
@@ -111,6 +111,45 @@
 
     <script>
 
+
+        //........................... Economy Button Increase Decrease ....................//
+
+        function buttonHandlereconomy(isincrease){
+            
+            const ticketNumber = document.getElementById("ticket-number-economy");
+            const ticketNumberFloating = parseInt(ticketNumber.value);
+            var ticketCount = ticketNumberFloating;
+            if(isincrease == true) {
+                ticketCount = ticketNumberFloating + 1;
+            }
+            if(isincrease == false && ticketCount > 0){
+
+                ticketCount = ticketNumberFloating -1;
+            }
+
+            document.getElementById("ticket-number-economy").value = ticketCount;
+        }
+
+
+
+        //........................... Economy Button Increase Decrease ....................//
+        
+            
+        function buttonHandlbusiness(isincrease){
+            
+            const ticketNumber = document.getElementById("ticket-number-business");
+            const ticketNumberFloating = parseInt(ticketNumber.value);
+            var ticketCount = ticketNumberFloating;
+            if(isincrease == true) {
+                ticketCount = ticketNumberFloating + 1;
+            }
+            if(isincrease == false && ticketCount > 0){
+
+                ticketCount = ticketNumberFloating -1;
+            }
+
+            document.getElementById("ticket-number-business").value = ticketCount;
+        }
     </script>
 </body>
 
